@@ -14,3 +14,6 @@ puutarhasovellus/src/entities/__pycache__/
 puutarhasovellus/src/repositories/__pycache__/
 puutarhasovellus/src/services/__pycache__/
 puutarhasovellus/src/tests/__pycache__/
+puutarhasovellus/.coverage
+puutarhasovellus/htmlcov/
+puutarhasovellus/.pytest_cache
