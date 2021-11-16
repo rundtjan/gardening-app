@@ -1,11 +1,28 @@
-# Yleinen info tästä reposta
-## Tehtävät
-### Viikko 1   
-[Gitlog.txt](https://github.com/rundtjan/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)   
-[Komentorivi.txt](https://github.com/rundtjan/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-### Viikko 2  
-[Löytyy täältä](https://github.com/rundtjan/ot-harjoitustyo/tree/master/laskarit/viikko2)  
-
-### Harjoitustyön vaatimusmäärittely  
-https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/vaatimusmaarittely.md
+# Puutarhasovellus
+## Vaatimusmäärittely  
+https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/vaatimusmaarittely.md  
+## Asennus
+1. Siirry kansioon "Puutarhasovellus"
+```bash
+cd puutarhasovellus
+```
+2. Asenna riippuvuudet:
+```bash
+poetry install
+```
+3. Suorita alustustoimenpiteet, HUOM! on olemassa kaksi vaihtoehtoa, jos sinun terminaalissa toimii python toimii komennolla "py" käytä:  
+```bash
+poetry run invoke build   
+```
+Jos taas python toimii komennolla "python3" käytä:
+```bash
+poetry run invoke alt-build
+```
+4. Käynnistä joko komennolla
+```bash
+poetry run invoke start
+```
+tai (jos python toimii komennolla "python3" sinun terminaalissa):
+```bash
+poetry run invoke alt-start
+```
