@@ -16,8 +16,6 @@ class UI:
 
         self._root = root
         self._current = None
-        #self.userEntry = None
-        #self.pwEntry = None
     
     def start(self):
         '''Function that starts the UI by showing the login-window
@@ -31,69 +29,33 @@ class UI:
             self._current.destroy()
 
         self._current = None
-    
-    def destroy(self):
-
 
     def _show_login(self):
         '''Function that shows the login window
         '''
         self._hide_current()
-        self_current = LoginView(self._root, self._show_registration, self._show_mainview, self._show_adminview)
+        self._current = LoginView(self._root, self._show_registration, self._show_mainview, self._show_adminview)
+        self._current.pack()
 
     def _show_registration(self):
         '''Function that shows the registration window
         '''
         self._hide_current()
-        self_current = RegistrationView(self._root, self._show_login)
-    
-    def _handle_login(self, username, password):
-        '''Function to handle login.
+        self._current = RegistrationView(self._root, self._show_login)
+        self._current.pack()
 
-        Args:
-            username: String.
-            password: String.
-
+    def _show_mainview(self):
+        '''Function that shows the mainview window
         '''
-
         pass
+        #self._hide_current()
+        #self._current = MainView(self._root, self._show_login)
+        #self._current.pack()
 
-    def _handle_registration(self):
-        '''Function to show registration window.
+    def _show_adminview(self):
+        '''Function that shows the admin window
         '''
-        
         pass
-
-        def _handle_login(self, username, password):
-        '''Function to handle login.
-
-        Args:
-            username: String.
-            password: String.
-
-        '''
-
-        pass
-
-
-    def startold(self):
-        userLabel = ttk.Label(master=self._root, text="Username")
-        self.userEntry = ttk.Entry(master=self._root)
-        passwordLabel = ttk.Label(master=self._root, text="Password")
-        self.pwEntry = ttk.Entry(master=self._root)
-        loginButton = ttk.Button(master=self._root, text="Login", command=self._handle_login)
-        regButton = ttk.Button(master=self._root, text="Register", command=self._handle_register)
-        userLabel.pack()
-        self.userEntry.pack()
-        passwordLabel.pack()
-        self.pwEntry.pack()
-        loginButton.pack()
-        regButton.pack()
-
-    def _handle_login(self):
-        username = self.userEntry.get()
-        password = self.pwEntry.get()
-        print(f"Looks like {username} has password {password}")
-
-    def _handle_register(self):
-        print("So you want to register")
+        #self._hide_current()
+        #self._current = MainView(self._root, self._show_login)
+        #self._current.pack()
