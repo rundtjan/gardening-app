@@ -1,5 +1,5 @@
 from tkinter import ttk, StringVar, constants
-from services.gardening_service import GardeningService
+from services.gardening_service import gardening_service
 
 class RegistrationView:
     '''An object that creates the registration view
@@ -28,7 +28,12 @@ class RegistrationView:
         self._frame.destroy()
 
     def _handle_registration(self):
-        pass
+        username = self._user_entry.get()
+        password = self._pw_entry.get()
+        if gardening_service.register_user(username, password):
+            self._show_login()
+        else:
+            print("User exists")
     
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

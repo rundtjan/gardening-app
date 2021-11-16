@@ -10,3 +10,6 @@ laskarit/viikko2/unicafe/htmlcov/
 puutarhasovellus/src/ui/__pycache__/
 puutarhasovellus/src/__pycache__/
 puutarhasovellus/data/db.sqlite
+puutarhasovellus/src/entities/__pycache__/
+puutarhasovellus/src/repositories/__pycache__/
+puutarhasovellus/src/services/__pycache__/
