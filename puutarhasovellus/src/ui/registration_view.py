@@ -1,5 +1,5 @@
 from tkinter import ttk, StringVar, constants
-from services.gardening_service import gardening_service
+from services.gardening_service import gardening_service, UserNameInUseError, CredentialsTooShortError
 
 class RegistrationView:
     '''An object that creates the registration view
@@ -31,11 +31,13 @@ class RegistrationView:
     def _handle_registration(self):
         username = self._user_entry.get()
         password = self._pw_entry.get()
-        if gardening_service.register_user(username, password):
-            print("should show login")
+        try:
+            gardening_service.register_user(username, password)
             self._show_login()
-        else:
+        except UserNameInUseError:
             self._error_label_var.set("The username already exists.")
+        except CredentialsTooShortError:
+            self._error_label_var.set("You need longer credentials.")
     
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

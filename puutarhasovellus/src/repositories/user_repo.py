@@ -36,6 +36,21 @@ class UserRepo:
 
         return None
 
+    def get_all(self):
+        '''Function for getting all users.
+
+        Returns all users'''
+
+        cursor = self._conn.cursor()
+
+        cursor.execute(
+            'select * from users'
+        )
+
+        rows = cursor.fetchall()
+
+        return list(rows)
+
     def get_user(self, username):
         '''Function for finding a user.
 
@@ -64,10 +79,10 @@ class UserRepo:
         '''Function to delete all db-entries.
         '''
 
-        cursor = self._comm.cursor()
+        cursor = self._conn.cursor()
 
         cursor.execute('delete from users')
 
-        self._comm.commit()
+        self._conn.commit()
 
 user_repo = UserRepo(get_db_connection())

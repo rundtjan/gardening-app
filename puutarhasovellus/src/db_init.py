@@ -20,11 +20,6 @@ def create_tables(conn):
         );
     ''')
 
-    cursor.execute('''
-        insert into users (username, password, admin)
-        values ('test', 'pass', false)
-    ''')
-
     conn.commit()
 
 def init_db():
