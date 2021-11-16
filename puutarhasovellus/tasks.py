@@ -2,7 +2,8 @@ from invoke import task
 
 @task
 def build(ctx):
-    ctx.run("mkdir data; py src/db_init.py")
+    ctx.run("mkdir data")
+    ctx.run("py src/db_init.py")
 
 @task
 def start(ctx):

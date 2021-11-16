@@ -54,9 +54,9 @@ class UserRepo:
         )
 
         row = cursor.fetchone()
-
+        
         if row:
-            return User(row[username], row[password], row[admin])
+            return User(row[0], row[1], row[2])
         else:
             return None
     
