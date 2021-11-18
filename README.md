@@ -1,6 +1,8 @@
 # Gardening application
 ## System requirements  
-https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/vaatimusmaarittely.md  
+https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/vaatimusmaarittely.md 
+## For the course : työaikakirjanpito
+https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/tyoaikakirjanpito.md 
 ## Installation
 1. Change directory to the folder "Puutarhasovellus"
 ```bash
