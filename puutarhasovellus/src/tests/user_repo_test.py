@@ -22,3 +22,12 @@ class TestUserRepo(unittest.TestCase):
         user_repo.delete_all()
         all = user_repo.get_all()
         self.assertEqual(len(all), 0)
+    
+    def test_get_user_that_exists(self):
+        user_repo.create(self.user_one)
+        user = user_repo.get_user('One')
+        self.assertEqual(user.password, 'Gamma')
+    
+    def test_get_user_that_doesnt_exist(self):
+        user = user_repo.get_user('No such user')
+        self.assertIsNone(user)

@@ -1,5 +1,6 @@
 from ui.login_view import LoginView
 from ui.registration_view import RegistrationView
+from ui.main_view import MainView
 
 class UI:
     '''Master class for all UI:s
@@ -47,7 +48,9 @@ class UI:
     def _show_mainview(self):
         '''Function that shows the mainview window
         '''
-        pass
+        self._hide_current()
+        self._current = MainView(self._root, self._show_login, self._show_plantation, self._show_adminview)
+        self._current.pack()
         #self._hide_current()
         #self._current = MainView(self._root, self._show_login)
         #self._current.pack()
@@ -59,3 +62,7 @@ class UI:
         #self._hide_current()
         #self._current = MainView(self._root, self._show_login)
         #self._current.pack()
+
+    def _show_plantation(self, id):
+        print("Show plantation with id: " + id)
+        pass

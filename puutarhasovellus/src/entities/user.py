@@ -19,3 +19,6 @@ class User:
         self.username = username
         self.password = password
         self.admin = admin
+
+    def __str__(self):
+        return f"{self.username}"

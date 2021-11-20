@@ -1,5 +1,5 @@
 from tkinter import ttk, StringVar, constants
-from services.gardening_service import GardeningService
+from services.gardening_service import gardening_service, LoginError
 
 class LoginView:
     '''An object that creates the loginview.
@@ -35,7 +35,11 @@ class LoginView:
     def _handle_login(self):
         username = self._user_entry.get()
         password = self._pw_entry.get()
-        self._error_label_var.set("Login function not yet working.")
+        try:
+            gardening_service.login_user(username, password)
+            self._show_mainview()
+        except LoginError:
+            self._error_label_var.set("Check your credentials.")
     
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
