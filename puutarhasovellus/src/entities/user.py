@@ -14,7 +14,7 @@ class User:
             username: string, no restrictions.
             password: string, no restrictions.
             status: boolean, False if regular user, True if adminuser.
-        
+
         '''
         self.username = username
         self.password = password

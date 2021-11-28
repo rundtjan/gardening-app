@@ -27,21 +27,21 @@ class GardeningService:
     def register_user(self, username, password, admin=False):
         if self._user_repo.get_user(username):
             raise UserNameInUseError("The username is already in use.")
-        elif len(username) < 3 or len(password) < 3:
+        if len(username) < 3 or len(password) < 3:
             raise CredentialsTooShortError("Both username and password need to be atleast 3 characters long.")
-        else:
-            self._user_repo.create(User(username, password, admin))
-            return True
+        
+        self._user_repo.create(User(username, password, admin))
+        return True
 
     def login_user(self, username, password):
         user = self._user_repo.get_user(username)
         if user and user.password == password:
-                self._user = user
+            self._user = user
         else:
             raise LoginError("Check your credentials")
-    
+
     def get_plantations(self):
         return self._plantation_repo.get_by_user(self._user)
 
-    
+
 gardening_service = GardeningService()

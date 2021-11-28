@@ -1,6 +1,7 @@
 from tkinter import ttk, StringVar, constants
 from services.gardening_service import gardening_service, UserNameInUseError, CredentialsTooShortError
 
+
 class RegistrationView:
     '''An object that creates the registration view
     '''
@@ -38,17 +39,20 @@ class RegistrationView:
             self._error_label_var.set("The username already exists.")
         except CredentialsTooShortError:
             self._error_label_var.set("You need longer credentials.")
-    
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(master=self._frame, text="Enter new credentials")
-        error_label = ttk.Label(master=self._frame, textvariable=self._error_label_var, foreground="red")
+        error_label = ttk.Label(
+            master=self._frame, textvariable=self._error_label_var, foreground="red")
         user_label = ttk.Label(master=self._frame, text="Username")
         self._user_entry = ttk.Entry(master=self._frame)
         password_label = ttk.Label(master=self._frame, text="Password")
         self._pw_entry = ttk.Entry(master=self._frame)
-        register_button = ttk.Button(master=self._frame, text="Register", command=self._handle_registration)
-        show_login_button = ttk.Button(master=self._frame, text="Back to login", command=self._show_login)
+        register_button = ttk.Button(
+            master=self._frame, text="Register", command=self._handle_registration)
+        show_login_button = ttk.Button(
+            master=self._frame, text="Back to login", command=self._show_login)
 
         label.grid(row=0, column=0, padx=5, pady=5)
         error_label.grid(row=0, column=1, padx=5, pady=5)

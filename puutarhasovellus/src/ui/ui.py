@@ -6,18 +6,18 @@ class UI:
     '''Master class for all UI:s
     '''
     def __init__(self, root):
-        '''Constructor. 
+        '''Constructor.
 
         Args:
             root: the tkinter-root-object
-        
+
         Also initializes a _current-variable that keeps track of and manipulizes which window the UI is showing.
 
         '''
 
         self._root = root
         self._current = None
-    
+
     def start(self):
         '''Function that starts the UI by showing the login-window
         '''
@@ -59,10 +59,7 @@ class UI:
         '''Function that shows the admin window
         '''
         pass
-        #self._hide_current()
-        #self._current = MainView(self._root, self._show_login)
-        #self._current.pack()
 
-    def _show_plantation(self, id):
-        print("Show plantation with id: " + id)
-        pass
+
+    def _show_plantation(self, plant_id):
+        print("Show plantation with id: " + plant_id)

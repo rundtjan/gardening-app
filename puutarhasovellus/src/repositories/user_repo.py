@@ -1,4 +1,3 @@
-
 from entities.user import User
 from db_connection import get_db_connection
 
@@ -20,7 +19,7 @@ class UserRepo:
 
         Args:
             user: user to add as user-object.
-        
+
         Returns:
             At the moment returns None.
         '''
@@ -56,7 +55,7 @@ class UserRepo:
 
         Args:
             username: String.
-        
+
         Returns:
             Returns a user-object or None.
         '''
@@ -69,11 +68,11 @@ class UserRepo:
         )
 
         row = cursor.fetchone()
-        
+
         if row:
             return User(row[0], row[1], row[2])
-        else:
-            return None
+
+        return None
     
     def delete_all(self):
         '''Function to delete all db-entries.

@@ -1,6 +1,8 @@
 # Gardening application
 ## System requirements  
 https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/vaatimusmaarittely.md 
+## Application architecture
+https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/architecture.md 
 ## For the course : työaikakirjanpito
 https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/tyoaikakirjanpito.md 
 ## Installation
@@ -45,3 +47,12 @@ To analyze test coverage:
 ```bash
 poetry run invoke coverage-report
 ```
+To check the quality of the code with pylint
+```bash
+poetry run invoke pylint
+```
+Or then enter the poetry shell with
+```bash
+poetry shell
+```
+So you can leave out "poetry run" in all the commands above.

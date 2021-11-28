@@ -10,24 +10,24 @@ class TestUserRepo(unittest.TestCase):
 
     def test_create(self):
         user_repo.create(self.user_one)
-        all = user_repo.get_all()
-        self.assertEqual(len(all), 1)
-        self.assertEqual(all[0]['username'], 'One')
+        allusers = user_repo.get_all()
+        self.assertEqual(len(allusers), 1)
+        self.assertEqual(allusers[0]['username'], 'One')
 
-    def test_delete(self):
-        user_repo.create(self.user_one)
-        user_repo.create(self.user_two)
-        all = user_repo.get_all()
-        self.assertEqual(len(all), 2)
-        user_repo.delete_all()
-        all = user_repo.get_all()
-        self.assertEqual(len(all), 0)
-    
     def test_get_user_that_exists(self):
         user_repo.create(self.user_one)
         user = user_repo.get_user('One')
         self.assertEqual(user.password, 'Gamma')
-    
+
     def test_get_user_that_doesnt_exist(self):
         user = user_repo.get_user('No such user')
         self.assertIsNone(user)
+
+    def test_delete(self):
+        user_repo.create(self.user_one)
+        user_repo.create(self.user_two)
+        allusers = user_repo.get_all()
+        self.assertEqual(len(allusers), 2)
+        user_repo.delete_all()
+        allusers = user_repo.get_all()
+        self.assertEqual(len(allusers), 0)

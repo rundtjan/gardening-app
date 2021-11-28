@@ -22,7 +22,10 @@ There will be at least 5 user interfaces:
 - the user can make add a new entry (i.e. "plant something")  
 - the user can add data to entry (e.g. register yield, comment on 
 weather conditions)  
-- the user can delete/hide entries  
+- the user can delete/hide entries
+### Functions in production mode at the moment
+- the user can register for an account
+- the user can login and see the mainview
 ## Further development ideas  
 - statistics for general data  
 - integrate weather statistics  

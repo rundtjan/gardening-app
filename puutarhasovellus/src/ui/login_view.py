@@ -1,6 +1,7 @@
 from tkinter import ttk, StringVar, constants
 from services.gardening_service import gardening_service, LoginError
 
+
 class LoginView:
     '''An object that creates the loginview.
     '''
@@ -23,7 +24,7 @@ class LoginView:
         self._user_entry = None
         self._pw_entry = None
         self._error_label_var = StringVar()
-        
+
         self._initialize()
 
     def pack(self):
@@ -40,17 +41,20 @@ class LoginView:
             self._show_mainview()
         except LoginError:
             self._error_label_var.set("Check your credentials.")
-    
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(master=self._frame, text="Enter credentials")
-        error_label = ttk.Label(master=self._frame, textvariable=self._error_label_var, foreground="red")
+        error_label = ttk.Label(master=self._frame,
+                                textvariable=self._error_label_var, foreground="red")
         user_label = ttk.Label(master=self._frame, text="Username")
         self._user_entry = ttk.Entry(master=self._frame)
         password_label = ttk.Label(master=self._frame, text="Password")
         self._pw_entry = ttk.Entry(master=self._frame)
-        login_button = ttk.Button(master=self._frame, text="Login", command=self._handle_login)
-        register_button = ttk.Button(master=self._frame, text="Register", command=self._show_registration)
+        login_button = ttk.Button(
+            master=self._frame, text="Login", command=self._handle_login)
+        register_button = ttk.Button(
+            master=self._frame, text="Register", command=self._show_registration)
 
         label.grid(row=0, column=0, padx=5, pady=5)
         error_label.grid(row=0, column=1, padx=5, pady=5)
@@ -62,4 +66,3 @@ class LoginView:
         register_button.grid(row=3, column=1, padx=5, pady=5)
 
         self._root.grid_columnconfigure(1, weight=1)
-

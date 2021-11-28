@@ -1,6 +1,7 @@
 from tkinter import ttk, StringVar, constants
 from services.gardening_service import gardening_service, LoginError
 
+
 class MainView:
     '''An object that creates the loginview.
     '''
@@ -23,7 +24,7 @@ class MainView:
         #self._user_entry = None
         #self._pw_entry = None
         self._error_label_var = StringVar()
-        
+
         self._initialize()
 
     def pack(self):
@@ -32,30 +33,21 @@ class MainView:
     def destroy(self):
         self._frame.destroy()
 
-    def _handle_login(self):
-        username = self._user_entry.get()
-        password = self._pw_entry.get()
-        try:
-            gardening_service.login_user(username, password)
-            self._show_mainview()
-        except LoginError:
-            self._error_label_var.set("Check your credentials.")
-    
     def _initialize_plant_rows(self):
         plantations = gardening_service.get_plantations()
         for plant in plantations:
             #ttk.Label(master=self._frame, text=str(plant)).grid(column=0)
-            ttk.Button(master=self._frame, text=str(plant), command=lambda: self._edit_plantation(plant._id)).grid(column=0)
+            ttk.Button(master=self._frame, text=str(
+                plant), command=lambda: self._edit_plantation(plant.get_id())).grid(column=0)
 
-    def _edit_plantation(self, id):
-        self._show_plantation(id)
+    def _edit_plantation(self, plant_id):
+        self._show_plantation(plant_id)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(master=self._frame, text="Add or edit plantation")
-        error_label = ttk.Label(master=self._frame, textvariable=self._error_label_var, foreground="red")
-        #login_button = ttk.Button(master=self._frame, text="Login", command=self._handle_login)
-        #register_button = ttk.Button(master=self._frame, text="Register", command=self._show_registration)
+        error_label = ttk.Label(
+            master=self._frame, textvariable=self._error_label_var, foreground="red")
 
         label.grid(row=0, column=0, padx=5, pady=5)
         error_label.grid(row=0, column=1, padx=5, pady=5)
