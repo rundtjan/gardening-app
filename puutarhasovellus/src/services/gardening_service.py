@@ -1,4 +1,5 @@
 from entities.user import User
+from entities.plantation import Plantation
 from repositories.user_repo import user_repo as default_user_repo
 from repositories.plantation_repo import plantation_repo as default_plantation_repo
 
@@ -9,6 +10,12 @@ class CredentialsTooShortError(Exception):
     pass
 
 class LoginError(Exception):
+    pass
+
+class PlantNameTooShortError(Exception):
+    pass
+
+class NoPlantingAmountError(Exception):
     pass
 
 class GardeningService:
@@ -42,6 +49,23 @@ class GardeningService:
 
     def get_plantations(self):
         return self._plantation_repo.get_by_user(self._user)
+    
+    def get_plantation_by_id(self, plant_id):
+        return self._plantation_repo.get_by_id(plant_id)
 
+    def create_plantation(self, plant, date, amount_planted, info):
+        if len(plant) < 3:
+            raise PlantNameTooShortError("The plantname is too short.")
+        if len(amount_planted) == 0:
+            raise NoPlantingAmountError("Please enter the amount planted.")
+        plantation = Plantation(self._user.username, plant, date, amount_planted, info, "", "")
+        self._plantation_repo.create(plantation)
+
+    def update_plantation(self, plantation):
+        if len(plantation.get_plant()) < 3:
+            raise PlantNameTooShortError("The plantname is too short.")
+        if len(plantation.get_amount_planted()) == 0:
+            raise NoPlantingAmountError("Please enter the amount planted.")
+        self._plantation_repo.update(plantation)
 
 gardening_service = GardeningService()

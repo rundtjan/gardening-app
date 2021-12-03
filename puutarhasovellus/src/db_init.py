@@ -7,6 +7,10 @@ def drop_all(conn):
         drop table if exists users
     ''')
 
+    cursor.execute('''
+            drop table if exists plantations
+    ''')
+
     conn.commit()
 
 def create_tables(conn):
@@ -17,6 +21,19 @@ def create_tables(conn):
             username text primary key,
             password text,
             admin boolean
+        );
+    ''')
+
+    cursor.execute('''
+        create table plantations(
+            plant_id INTEGER PRIMARY KEY,
+            username text,
+            plant text,
+            planting_date int,
+            amount_planted text,
+            info text,
+            yield_date int,
+            amount_yield text
         );
     ''')
 

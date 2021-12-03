@@ -14,30 +14,30 @@ cd puutarhasovellus
 ```bash
 poetry install
 ```
-3. Build database, NB! if python is accessed with the command "py" in your terminal, use the command:  
+3. Build database, NB! if python is accessed with the command "python3" in your terminal, use the command:  
 ```bash
 poetry run invoke build   
 ```
-If python is accessed with the command "python3" in your terminal, use the command:
+If python is accessed with the command "py" in your terminal, use the command:
 ```bash
-poetry run invoke alt-build
+poetry run invoke win-build
 ```
-4. Run the application either (if python is called "py" in your terminal):
+4. Run the application either (if python is called "python3" in your terminal):
 ```bash
 poetry run invoke start
 ```
-or (if python is called "python3" in your terminal):
+or (if python is called "py" in your terminal):
 ```bash
-poetry run invoke alt-start
+poetry run invoke win-start
 ```
 ## Command line usage  
 Start the application with:  
 ```bash
 poetry run invoke start
 ```
-Or if your terminal uses "python3" to access python use:  
+Or if your terminal uses "py" to access python use:  
 ```bash
-poetry run invoke alt-start
+poetry run invoke win-start
 ```
 To run tests:
 ```bash

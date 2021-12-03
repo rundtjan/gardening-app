@@ -1,6 +1,9 @@
 from ui.login_view import LoginView
 from ui.registration_view import RegistrationView
 from ui.main_view import MainView
+from ui.add_plantation_view import AddPlantationView
+from ui.edit_plantation_view import EditPlantationView
+from ui.edit_planting_date_view import EditPlantingDateView
 
 class UI:
     '''Master class for all UI:s
@@ -49,7 +52,7 @@ class UI:
         '''Function that shows the mainview window
         '''
         self._hide_current()
-        self._current = MainView(self._root, self._show_login, self._show_plantation, self._show_adminview)
+        self._current = MainView(self._root, self._show_login, self._add_plantation, self._show_edit_plantation, self._show_adminview)
         self._current.pack()
         #self._hide_current()
         #self._current = MainView(self._root, self._show_login)
@@ -60,6 +63,20 @@ class UI:
         '''
         pass
 
+    def _add_plantation(self):
+        self._hide_current()
+        self._current = AddPlantationView(self._root, self._show_mainview)
+        self._current.pack()
 
-    def _show_plantation(self, plant_id):
-        print("Show plantation with id: " + plant_id)
+    def _show_edit_plantation(self, plant_id):
+        self._hide_current()
+        self._current= EditPlantationView(self._root, self._show_mainview, self._edit_planting_date, self._edit_yield_date, plant_id)
+        self._current.pack()
+
+    def _edit_planting_date(self, plant_id):
+        self._hide_current()
+        self._current = EditPlantingDateView(self._root, self._show_edit_plantation, plant_id)
+        self._current.pack()
+
+    def _edit_yield_date(self, plant_id):
+        pass
