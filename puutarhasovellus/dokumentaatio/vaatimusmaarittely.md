@@ -26,6 +26,8 @@ weather conditions)
 ### Functions in production mode at the moment
 - the user can register for an account
 - the user can login and see the mainview
+- the user can add a new plantation
+- the user can edit a plantation (but cannot yet add yield-information)
 ## Further development ideas  
 - statistics for general data  
 - integrate weather statistics  

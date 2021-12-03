@@ -8,3 +8,7 @@
 | 22.11. | 2    | login-toiminto |
 | 24.11. | 2    | pylint käyttöön |
 | 25.11  | 1    | kaaviot, arkkitehtuuri |
+| 29.11  | 2    | lisääminen |
+|  1.12  | 2    | kalenterit |
+|  3.12  | 2    | muokkaaminen |
+| YHT.   | 18   |              |
