@@ -26,7 +26,11 @@ class AddPlantationView:
 
     def _save_plantation(self):
         date = self._cal.get_date()
-        date = datetime.datetime.strptime(date, "%m/%d/%y")
+        timestring = "%m/%d/%y"
+        #this is a fix for the calendar emitting data in different form on Linux:
+        if len(date.split("/")[2]) == 4:
+             timestring ="%d/%m/%Y"
+        date = datetime.datetime.strptime(date, timestring)
         plant = self._plant_entry.get()
         amount_planted = self._amount_planted_entry.get()
         info = self._info_entry.get()

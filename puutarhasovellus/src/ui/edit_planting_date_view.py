@@ -24,7 +24,11 @@ class EditPlantingDateView:
 
     def _edit_planting_date(self):
         date = self._cal.get_date()
-        date = datetime.datetime.strptime(date, "%m/%d/%y")
+        timestring = "%m/%d/%y"
+        #this is a fix for the calendar emitting data in different form on Linux:
+        if len(date.split("/")[2]) == 4:
+             timestring ="%d/%m/%Y"
+        date = datetime.datetime.strptime(date, timestring)
         self._plantation.set_planting_date(date)
         gardening_service.update_plantation(self._plantation)
         self._show_edit_plantation(self._plant_id)

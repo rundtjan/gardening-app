@@ -16,7 +16,7 @@ def test(ctx):
 @task
 def win_build(ctx):
     ctx.run("mkdir data")
-    ctx.runt("py src/db_init.py")
+    ctx.run("py src/db_init.py")
 
 @task
 def win_start(ctx):

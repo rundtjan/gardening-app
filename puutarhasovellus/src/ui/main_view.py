@@ -47,7 +47,6 @@ class MainView:
             self._add_edit_button(plant)
 
     def _edit_plantation(self, plant_id):
-        print(plant_id)
         self._show_edit_plantation(plant_id)
 
     def _initialize(self):
