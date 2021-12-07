@@ -3,7 +3,9 @@ from entities.plantation import Plantation
 from db_connection import get_db_connection
 
 def row_to_plantation(row):
-    return Plantation(row[1], row[2], toDate(row[3]), row[4], row[5], row[6], row[7], row[0])
+    if row[6] == "":
+        return Plantation(row[1], row[2], toDate(row[3]), row[4], row[5], row[6], row[7], row[0])
+    return Plantation(row[1], row[2], toDate(row[3]), row[4], row[5], toDate(row[6]), row[7], row[0])
 
 def toDate(timestamp):
     return datetime.datetime.fromtimestamp(timestamp)
