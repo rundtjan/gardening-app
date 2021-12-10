@@ -5,6 +5,7 @@ from ui.add_plantation_view import AddPlantationView
 from ui.edit_plantation_view import EditPlantationView
 from ui.edit_planting_date_view import EditPlantingDateView
 from ui.edit_yield_date_view import EditYieldDateView
+from ui.choose_year_view import ChooseYearView
 
 class UI:
     '''Master class for all UI:s
@@ -53,11 +54,8 @@ class UI:
         '''Function that shows the mainview window
         '''
         self._hide_current()
-        self._current = MainView(self._root, self._show_login, self._add_plantation, self._show_edit_plantation, self._show_adminview)
+        self._current = MainView(self._root, self._show_login, self._add_plantation, self._show_edit_plantation, self._show_adminview, self._show_choose_year)
         self._current.pack()
-        #self._hide_current()
-        #self._current = MainView(self._root, self._show_login)
-        #self._current.pack()
 
     def _show_adminview(self):
         '''Function that shows the admin window
@@ -82,4 +80,9 @@ class UI:
     def _edit_yield_date(self, plant_id):
         self._hide_current()
         self._current = EditYieldDateView(self._root, self._show_edit_plantation, plant_id)
+        self._current.pack()
+    
+    def _show_choose_year(self):
+        self._hide_current()
+        self._current = ChooseYearView(self._root, self._show_mainview)
         self._current.pack()

@@ -6,7 +6,7 @@ class MainView:
     '''An object that creates the loginview.
     '''
 
-    def __init__(self, root, show_login, add_plantation, show_edit_plantation, show_adminview):
+    def __init__(self, root, show_login, add_plantation, show_edit_plantation, show_adminview, show_choose_year):
         '''The constructor.
 
         Args:
@@ -21,9 +21,8 @@ class MainView:
         self._add_plantation = add_plantation
         self._show_edit_plantation = show_edit_plantation
         self._show_adminview = show_adminview
+        self._show_choose_year = show_choose_year
         self._frame = None
-        #self._user_entry = None
-        #self._pw_entry = None
         self._error_label_var = StringVar()
 
         self._initialize()
@@ -38,10 +37,10 @@ class MainView:
         ttk.Button(master=self._frame, text=str(plant), width=50, command=lambda: self._edit_plantation(plant.get_id())).grid(column=0)
 
     def _initialize_plant_rows(self):
-        plantations = gardening_service.get_plantations()
+        plantations = gardening_service.get_plantations_by_year()
         if len(plantations) > 0:
             label = ttk.Label(master=self._frame, text="Edit or review plantations:")
-            label.grid(row=1, column=0, padx=5, pady=5)
+            label.grid(row=3, column=0, padx=5, pady=5)
 
         for plant in plantations:
             self._add_edit_button(plant)
@@ -52,8 +51,10 @@ class MainView:
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         add_button = ttk.Button(master=self._frame, text="Add new plantation", width=50, command=self._add_plantation)
+        choose_button = ttk.Button(master=self._frame, text="Show other year", width=50, command=self._show_choose_year)
         
         add_button.grid(row=0, column=0, padx=5, pady=5)
+        choose_button.grid(row=1, column=0, padx=5, pady=5)
 
         self._initialize_plant_rows()
 

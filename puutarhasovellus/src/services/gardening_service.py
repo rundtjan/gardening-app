@@ -1,3 +1,4 @@
+import datetime
 from entities.user import User
 from entities.plantation import Plantation
 from repositories.user_repo import user_repo as default_user_repo
@@ -18,6 +19,9 @@ class PlantNameTooShortError(Exception):
 class NoPlantingAmountError(Exception):
     pass
 
+class YieldDateOrYieldAmountError(Exception):
+    pass
+
 class GardeningService:
     '''A class that handles the logic of the gardening application.
     '''
@@ -30,6 +34,7 @@ class GardeningService:
         self._user_repo = user_repo
         self._plantation_repo = plantation_repo
         self._user = None
+        self._active_year = datetime.datetime.now().year
 
     def register_user(self, username, password, admin=False):
         if self._user_repo.get_user(username):
@@ -49,6 +54,9 @@ class GardeningService:
 
     def get_plantations(self):
         return self._plantation_repo.get_by_user(self._user)
+
+    def get_plantations_by_year(self):
+        return self._plantation_repo.get_by_user_and_year(self._user, self._active_year)
     
     def get_plantation_by_id(self, plant_id):
         return self._plantation_repo.get_by_id(plant_id)
@@ -58,7 +66,7 @@ class GardeningService:
             raise PlantNameTooShortError("The plantname is too short.")
         if len(amount_planted) == 0:
             raise NoPlantingAmountError("Please enter the amount planted.")
-        plantation = Plantation(self._user.username, plant, date, amount_planted, info, "", "")
+        plantation = Plantation(self._user.username, plant, date, amount_planted, info)
         self._plantation_repo.create(plantation)
 
     def update_plantation(self, plantation):
@@ -66,6 +74,13 @@ class GardeningService:
             raise PlantNameTooShortError("The plantname is too short.")
         if len(plantation.get_amount_planted()) == 0:
             raise NoPlantingAmountError("Please enter the amount planted.")
+        if len (plantation.get_amount_planted()) > 0 and not plantation.get_yield_date():
+            raise YieldDateOrYieldAmountError("Both yield date and amount needed.")
+        if plantation.get_yield_date() and not plantation.get_amount_yield():
+            raise YieldDateOrYieldAmountError("Both yield date and amount needed.")
         self._plantation_repo.update(plantation)
+    
+    def set_year(self, year):
+        self._active_year = year
 
 gardening_service = GardeningService()

@@ -51,13 +51,13 @@ class Plantation:
     def set_amount_yield(self, amount_yield):
         self._amount_yield = amount_yield
 
-    def _timestamp_from_date(self, date):
-        if date == "":
-            return ""
+    def timestamp_from_date(self, date):
+        if not date:
+            return -1
         return int(time.mktime(date.timetuple()))
 
     def get_tuple(self):
-        return (self._username, self._plant, self._timestamp_from_date(self._planting_date), self._amount_planted, self._info, self._timestamp_from_date(self._yield_date), self._amount_yield)
+        return (self._username, self._plant, self.timestamp_from_date(self._planting_date), self._amount_planted, self._info, self.timestamp_from_date(self._yield_date), self._amount_yield)
 
     def __str__(self):
         return f"Planted: {self._plant}, {self._planting_date.day}/{self._planting_date.month}/{self._planting_date.year}"

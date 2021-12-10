@@ -1,7 +1,7 @@
 import datetime
 from tkinter import ttk, StringVar, constants
 from tkcalendar import Calendar
-from services.gardening_service import gardening_service, LoginError
+from services.gardening_service import gardening_service
 
 class EditYieldDateView:
     def __init__(self, root, _show_edit_plantation, plant_id):
@@ -14,7 +14,7 @@ class EditYieldDateView:
         self._yield_date = self._plantation.get_yield_date()
         self._cal = None
 
-        if self._yield_date == "":
+        if not self._yield_date:
             self._yield_date = datetime.datetime.now()  
 
         self._initialize()
