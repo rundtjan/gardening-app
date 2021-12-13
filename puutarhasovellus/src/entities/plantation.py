@@ -1,8 +1,18 @@
 import time
 
-class Plantation:
 
-    def __init__(self, username, plant, planting_date, amount_planted, info, yield_date=None, amount_yield=None, plantation_id=None):
+class Plantation:
+    def __init__(
+        self,
+        username,
+        plant,
+        planting_date,
+        amount_planted,
+        info,
+        yield_date=None,
+        amount_yield=None,
+        plantation_id=None,
+    ):
         self._plant = plant
         self._planting_date = planting_date
         self._amount_planted = amount_planted
@@ -14,10 +24,10 @@ class Plantation:
 
     def get_id(self):
         return self._id
-    
+
     def get_plant(self):
         return self._plant
-    
+
     def get_planting_date(self):
         return self._planting_date
 
@@ -35,7 +45,7 @@ class Plantation:
 
     def set_plant(self, plant):
         self._plant = plant
-    
+
     def set_planting_date(self, planting_date):
         self._planting_date = planting_date
 
@@ -57,7 +67,15 @@ class Plantation:
         return int(time.mktime(date.timetuple()))
 
     def get_tuple(self):
-        return (self._username, self._plant, self.timestamp_from_date(self._planting_date), self._amount_planted, self._info, self.timestamp_from_date(self._yield_date), self._amount_yield)
+        return (
+            self._username,
+            self._plant,
+            self.timestamp_from_date(self._planting_date),
+            self._amount_planted,
+            self._info,
+            self.timestamp_from_date(self._yield_date),
+            self._amount_yield,
+        )
 
     def __str__(self):
         return f"Planted: {self._plant}, {self._planting_date.day}/{self._planting_date.month}/{self._planting_date.year}"

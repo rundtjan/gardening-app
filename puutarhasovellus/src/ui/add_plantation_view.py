@@ -1,8 +1,9 @@
-import time
+# pylint: skip-file
+
 import datetime
 from tkinter import ttk, StringVar, constants
 from tkcalendar import Calendar
-from services.gardening_service import gardening_service, LoginError
+from services.gardening_service import gardening_service
 
 
 class AddPlantationView:

@@ -18,3 +18,4 @@ puutarhasovellus/.coverage
 puutarhasovellus/htmlcov/
 puutarhasovellus/.pytest_cache
 puutarhasovellus/test.py
+puutarhasovellus/src/functions/__pycache__/

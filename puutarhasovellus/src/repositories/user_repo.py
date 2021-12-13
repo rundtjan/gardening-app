@@ -33,8 +33,6 @@ class UserRepo:
 
         self._conn.commit()
 
-        return None
-
     def get_all(self):
         '''Function for getting all users.
 
@@ -73,7 +71,7 @@ class UserRepo:
             return User(row[0], row[1], row[2])
 
         return None
-    
+
     def delete_all(self):
         '''Function to delete all db-entries.
         '''

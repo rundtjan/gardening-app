@@ -1,3 +1,5 @@
+# pylint: skip-file
+
 from tkinter import ttk, StringVar, constants
 from services.gardening_service import gardening_service, LoginError
 
