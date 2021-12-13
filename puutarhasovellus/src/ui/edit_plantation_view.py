@@ -25,6 +25,7 @@ class EditPlantationView:
         self._cal = None
         self._date = datetime.datetime.now()
         self._row = 0
+        self._delete_try = 0
 
         self._initialize()
 
@@ -46,6 +47,14 @@ class EditPlantationView:
             self._show_mainview()
         except Exception as error:
             self._error_label_var.set(str(error))
+    
+    def _delete_plantation(self):
+        if self._delete_try == 0:
+            self._error_label_var.set("Click one more time to delete.")
+            self._delete_try += 1
+        else:
+            gardening_service.delete_plantation(self._plantation)
+            self._show_mainview()
 
     def _date_to_string(self, date):
         return str(date.day) + "/" + str(date.month) + "/" + str(date.year)
@@ -113,8 +122,8 @@ class EditPlantationView:
         )
         delete_button = ttk.Button(
             master=self._frame,
-            text="Delete plantation (coming up)",
-            command=self._show_mainview,
+            text="Delete plantation",
+            command=self._delete_plantation,
         )
 
         for element in [

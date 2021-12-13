@@ -95,6 +95,9 @@ class GardeningService:
             raise YieldDateOrYieldAmountError("Both yield date and amount needed.")
         self._plantation_repo.update(plantation)
 
+    def delete_plantation(self, plantation):
+        self._plantation_repo.delete(plantation)
+
     def set_year(self, year):
         self._active_year = year
 

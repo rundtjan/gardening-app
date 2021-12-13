@@ -94,7 +94,14 @@ class PlantationRepo:
 
         self._conn.commit()
 
-    def delete_all(self, plantation):  # for tests
+    def delete(self, plantation):
+        cursor = self._conn.cursor()
+
+        cursor.execute("DELETE from plantations WHERE plant_id=?;", (plantation.get_id(),))
+
+        self._conn.commit()
+
+    def delete_all(self):  # for tests
         cursor = self._conn.cursor()
 
         cursor.execute("DELETE from plantations;")
