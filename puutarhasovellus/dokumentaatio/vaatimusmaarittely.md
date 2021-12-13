@@ -27,7 +27,9 @@ weather conditions)
 - the user can register for an account
 - the user can login and see the mainview
 - the user can add a new plantation
-- the user can edit a plantation (but cannot yet add yield-information)
+- the user can edit a plantation, add info and so forth
+- the user can add yield-date and yield-amount (new week 6)
+- the user can choose from which year he/she wants to view plantations (new week 6)
 ## Further development ideas  
 - statistics for general data  
 - integrate weather statistics  

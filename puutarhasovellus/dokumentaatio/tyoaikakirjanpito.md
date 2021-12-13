@@ -11,4 +11,7 @@
 | 29.11  | 2    | lisääminen |
 |  1.12  | 2    | kalenterit |
 |  3.12  | 2    | muokkaaminen |
-| YHT.   | 18   |              |
+|  7.12  | 2    | sato-päivä    |
+|  8.12  | 2    | sato-määrä, tarkistus |
+|  11.12 | 1    | vuosivalinta |
+| YHT.   | 23   |              |

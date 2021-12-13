@@ -91,7 +91,9 @@ class EditPlantationView:
         add_button = ttk.Button(
             master=self._frame, text="Save", command=self._save_plantation)
         cancel_button = ttk.Button(
-            master=self._frame, text="Cancel", width=30, command=self._show_mainview)
+            master=self._frame, text="Cancel", command=self._show_mainview)
+        delete_button = ttk.Button(
+            master=self._frame, text="Delete plantation (coming up)", command=self._show_mainview)
 
         for element in [label,
                         edit_planting_date_button,
@@ -106,7 +108,8 @@ class EditPlantationView:
                         self._yield_entry,
                         error_label,
                         add_button,
-                        cancel_button]:
+                        cancel_button,
+                        delete_button]:
             self._add_to_grid(element)
 
         self._root.grid_columnconfigure(0, weight=1)

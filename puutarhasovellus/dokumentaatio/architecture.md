@@ -9,3 +9,15 @@ The application, being a quite straightforward system for storing information, r
 ![Classes](luokkakuva.jpg) 
 ## Logic
 The inner logic of the gardeningapplication is handled by the GardeningService-class, that communicates with the UI and the repository to create the user-experience. 
+## User interface  
+There are user interfaces for:  
+- logging in  
+- registering a new user  
+- a list of plantations  
+- adding a new plantation  
+- editing a plantation  
+- choosing year to see information from  
+## Data storage  
+The users and there plantations are stored in a sqlite-database. There are two tables, corresponding to the classes as described above under the heading "Classes".  
+
+
