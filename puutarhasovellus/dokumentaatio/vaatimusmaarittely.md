@@ -17,19 +17,14 @@ There will be at least 5 user interfaces:
 ### Before login  
 - the user can register for an account
 - the user can login
-### After login
-- the user sees an overview of his/her entries  
-- the user can make add a new entry (i.e. "plant something")  
-- the user can add data to entry (e.g. register yield, comment on 
-weather conditions)  
-- the user can delete/hide entries
 ### Functions in production mode at the moment
 - the user can register for an account
 - the user can login and see the mainview
 - the user can add a new plantation
 - the user can edit a plantation, add info and so forth
 - the user can add yield-date and yield-amount (new week 6)
-- the user can choose from which year he/she wants to view plantations (new week 6)
+- the user can choose from which year he/she wants to view plantations (new week 6)  
+- the user dan delete a plantation (new week 6)
 ## Further development ideas  
 - statistics for general data  
 - integrate weather statistics  
