@@ -1,4 +1,3 @@
-# Requirements specification  
 # User instructions  
 First follow the instructions in the [readme](https://github.com/rundtjan/ot-harjoitustyo#readme) to install the application. Then after running it, choose "Register" to register:  
 
