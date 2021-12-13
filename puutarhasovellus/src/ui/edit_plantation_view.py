@@ -37,9 +37,10 @@ class EditPlantationView:
         self._plantation.set_amount_planted(self._amount_planted_entry.get())
         self._plantation.set_info(self._info_entry.get())
         self._plantation.set_amount_yield(self._yield_entry.get())
+        just_yield_date = False
 
         try:
-            gardening_service.update_plantation(self._plantation)
+            gardening_service.update_plantation(self._plantation, just_yield_date)
             self._show_mainview()
         except Exception as error:
             self._error_label_var.set(str(error))

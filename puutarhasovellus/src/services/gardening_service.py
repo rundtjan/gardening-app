@@ -69,14 +69,14 @@ class GardeningService:
         plantation = Plantation(self._user.username, plant, date, amount_planted, info)
         self._plantation_repo.create(plantation)
 
-    def update_plantation(self, plantation):
+    def update_plantation(self, plantation, just_yield_date):
         if len(plantation.get_plant()) < 3:
             raise PlantNameTooShortError("The plantname is too short.")
         if len(plantation.get_amount_planted()) == 0:
             raise NoPlantingAmountError("Please enter the amount planted.")
         if len (plantation.get_amount_planted()) > 0 and not plantation.get_yield_date():
             raise YieldDateOrYieldAmountError("Both yield date and amount needed.")
-        if plantation.get_yield_date() and not plantation.get_amount_yield():
+        if plantation.get_yield_date() and not plantation.get_amount_yield() and not just_yield_date:
             raise YieldDateOrYieldAmountError("Both yield date and amount needed.")
         self._plantation_repo.update(plantation)
     

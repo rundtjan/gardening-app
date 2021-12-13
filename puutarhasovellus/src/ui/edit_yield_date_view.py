@@ -33,7 +33,8 @@ class EditYieldDateView:
              timestring ="%d/%m/%Y"
         date = datetime.datetime.strptime(date, timestring)
         self._plantation.set_yield_date(date)
-        gardening_service.update_plantation(self._plantation)
+        just_yield_date = True
+        gardening_service.update_plantation(self._plantation, just_yield_date)
         self._show_edit_plantation(self._plant_id)
 
     def _initialize(self):
