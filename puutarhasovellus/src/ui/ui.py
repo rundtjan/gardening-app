@@ -6,7 +6,7 @@ from ui.main_view import MainView
 from ui.add_plantation_view import AddPlantationView
 from ui.edit_plantation_view import EditPlantationView
 from ui.choose_year_view import ChooseYearView
-from ui.edit_date_view2 import EditDateView
+from ui.edit_date_view import EditDateView
 
 
 class UI:

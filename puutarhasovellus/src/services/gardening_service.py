@@ -47,20 +47,20 @@ class GardeningService:
         self._active_year = datetime.datetime.now().year
 
     def register_user(self, username, password, admin=False):
-        '''A method for adding a new user.
+        """A method for adding a new user.
 
         Args:
             username: string, the username
             password: string, the password
             admin: boolean, default to false, wether the new user will be an admin or not.
-        
+
         Raises:
             UserNameInUseError: if the username is already taken
             CredentialsTooShortError: if the username and/or password is shorter than 3 characters.
 
         Returns:
             True: if no errors were triggered.
-        '''
+        """
         if self._user_repo.get_user(username):
             raise UserNameInUseError("The username is already in use.")
         if len(username) < 3 or len(password) < 3:
@@ -72,15 +72,15 @@ class GardeningService:
         return True
 
     def login_user(self, username, password):
-        '''A method that handles a login
-        
+        """A method that handles a login
+
         Args:
             username: string, the username
             password: string, the password
 
         Raises:
             LoginError: if the credentials are not valid.
-        '''
+        """
         user = self._user_repo.get_user(username)
         if user and user.password == password:
             self._user = user
@@ -88,25 +88,23 @@ class GardeningService:
             raise LoginError("Check your credentials")
 
     def get_plantations(self):
-        '''A method to get plantations stored by the active user
-        '''
+        """A method to get plantations stored by the active user"""
         return self._plantation_repo.get_by_user(self._user)
 
     def get_plantations_by_year(self):
-        '''A method that gets plantations stored by the active user during the active year.
-        '''
+        """A method that gets plantations stored by the active user during the active year."""
         return self._plantation_repo.get_by_user_and_year(self._user, self._active_year)
 
     def get_plantation_by_id(self, plant_id):
-        '''A method that gets the information for a certain plantation.
-        
+        """A method that gets the information for a certain plantation.
+
         Args:
             plant_id: id for the plantation to be fetched.
-        '''
+        """
         return self._plantation_repo.get_by_id(plant_id)
 
     def create_plantation(self, plant, date, amount_planted, info):
-        '''A method to create a new plantation.
+        """A method to create a new plantation.
 
         Args:
             plant: string, the name of the plant species.
@@ -117,7 +115,7 @@ class GardeningService:
         Raises:
             PlantNameTooShortError: if the plantname is shorter than 3 characters.
             NoPlantingAmountError: if there's no information on how much that was planted.
-        '''
+        """
         if len(plant) < 3:
             raise PlantNameTooShortError("The plantname is too short.")
         if len(amount_planted) == 0:
@@ -126,8 +124,8 @@ class GardeningService:
         self._plantation_repo.create(plantation)
 
     def update_plantation(self, plantation, just_yield_date=False):
-        '''A method to update information on a plant.
-        
+        """A method to update information on a plant.
+
         Args:
             plantation: plantation-object, to be updated.
             just_yield_date: boolean, True if it's ok to store the info without yield amount.
@@ -136,7 +134,7 @@ class GardeningService:
             PlantNameTooShortError: if the plantname is shorter than 3 characters.
             NoPlantingAmountError: if information on the amount planted is missing.
             YieldDateOrYieldAmountError: if yield date or yield amount is missing and both are required.
-        '''
+        """
         if len(plantation.get_plant()) < 3:
             raise PlantNameTooShortError("The plantname is too short.")
         if len(plantation.get_amount_planted()) == 0:
@@ -152,19 +150,19 @@ class GardeningService:
         self._plantation_repo.update(plantation)
 
     def delete_plantation(self, plantation):
-        '''A method to delete a plantation.
-        
+        """A method to delete a plantation.
+
         Args:
             plantation: plantation-object to be deleted.
-        '''
+        """
         self._plantation_repo.delete(plantation)
 
     def set_year(self, year):
-        '''A method to set the active year.
-        
+        """A method to set the active year.
+
         Args:
             year: int, year to be set.
-        '''
+        """
         self._active_year = year
 
 

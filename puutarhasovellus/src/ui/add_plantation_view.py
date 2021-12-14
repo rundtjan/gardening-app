@@ -1,9 +1,10 @@
 # pylint: skip-file
 
 import datetime
-from tkinter import ttk, StringVar, constants
+from tkinter import ttk, StringVar, constants, IntVar
 from tkcalendar import Calendar
 from services.gardening_service import gardening_service
+from functions.functions import create_date_menu
 
 
 class AddPlantationView:
@@ -26,6 +27,9 @@ class AddPlantationView:
         self._cal = None
         self._date = datetime.datetime.now()
         self._row = 0
+        self._day = IntVar()
+        self._month = IntVar()
+        self._year = IntVar()
 
         self._initialize()
 
@@ -42,12 +46,15 @@ class AddPlantationView:
     def _save_plantation(self):
         '''A method that saves the info the user has entered into the form in the view.
         '''
-        date = self._cal.get_date()
-        timestring = "%m/%d/%y"
-        # this is a fix for the calendar emitting data in different form on Linux:
-        if len(date.split("/")[2]) == 4:
-            timestring = "%d/%m/%Y"
-        date = datetime.datetime.strptime(date, timestring)
+        try:
+            date = datetime.datetime(
+                year=int(self._year.get()),
+                month=int(self._month.get()),
+                day=int(self._day.get()),
+            )
+        except Exception as error:
+            self._error_label_var.set(str(error))
+            return
         plant = self._plant_entry.get()
         amount_planted = self._amount_planted_entry.get()
         info = self._info_entry.get()
@@ -86,7 +93,7 @@ class AddPlantationView:
         element.grid(
             row=self._row,
             column=0,
-            columnspan=2,
+            columnspan=3,
             padx=5,
             pady=5,
             sticky=(constants.E, constants.W),
@@ -101,13 +108,10 @@ class AddPlantationView:
         error_label = ttk.Label(
             master=self._frame, textvariable=self._error_label_var, foreground="red"
         )
-        self._cal = Calendar(
-            self._frame,
-            selectmode="day",
-            year=self._date.year,
-            month=self._date.month,
-            day=self._date.day,
+        plant_cal_label = ttk.Label(
+            master=self._frame, text="Enter date (day/month/year):"
         )
+        dropdowns = create_date_menu(self._frame, self._date, self._year, self._month, self._day)
         plant_label = self._create_label("Which plant?")
         self._plant_entry = self._create_entry()
         amount_label = self._create_label("How much did you plant?")
@@ -125,9 +129,16 @@ class AddPlantationView:
             master=self._frame, text="Cancel", width=30, command=self._show_mainview
         )
 
+        for element in [label, plant_cal_label]:
+            self._add_to_grid(element)
+
+        dropdowns['day'].grid(row=2, column=0)
+        dropdowns['month'].grid(row=2, column=1)
+        dropdowns['year'].grid(row=2, column=2)
+
+        self._row += 1
+
         for element in [
-            label,
-            self._cal,
             plant_label,
             self._plant_entry,
             amount_label,
