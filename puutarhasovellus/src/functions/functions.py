@@ -2,11 +2,30 @@ import time
 from tkinter import OptionMenu
 
 def timestamp_from_date(date):
+    '''Function to create timestamp from date
+    
+    Args:
+        date: date to turn into timestamp.
+
+    Returns:
+        Unix timestamp as int.
+    '''
     if not date:
         return -1
     return int(time.mktime(date.timetuple()))
 
 def create_date_menu(root, date, year_var, month_var, day_var):
+    '''Function that creates date input dropdowns.
+
+    Args:
+        date: the date to use as default.
+        year_var: a tkinter year-variable.
+        month_var: a tkinter month-variable.
+        day_var: a tkinter day-variable.
+
+    Returns:
+        A tuple containing dropdown-menus.
+    '''
     year = date.year
     month = date.month
     day = date.day
