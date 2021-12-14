@@ -14,4 +14,5 @@
 |  7.12  | 2    | sato-päivä    |
 |  8.12  | 2    | sato-määrä, tarkistus |
 |  11.12 | 1    | vuosivalinta |
-| YHT.   | 23   |              |
+| 13.12 | 2     | kalenteritoiminto uusiksi |
+| YHT.   | 25   |              |
