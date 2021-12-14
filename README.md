@@ -5,6 +5,8 @@ https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumen
 https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/architecture.md 
 ## For the course : työaikakirjanpito
 https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/tyoaikakirjanpito.md 
+## Documentation of testing  
+...
 ## User instructions
 https://github.com/rundtjan/ot-harjoitustyo/blob/master/puutarhasovellus/dokumentaatio/userinstructions.md 
 ## Installation

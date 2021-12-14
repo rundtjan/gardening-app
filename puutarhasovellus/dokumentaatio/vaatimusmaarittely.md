@@ -5,28 +5,27 @@ concerning when plants are planted, how many seeds are used, and how big
 the yield is. One can also store general information about the spot 
 where the plants are grown.  
 ## Users  
-There will be normal users ("gardeners") and admin-users.  
+There is only one form of users ("gardeners").  
 ## UI  
-There will be at least 5 user interfaces:  
+There are 6 main views:  
 - registration  
 - login  
 - overview of own information  
-- view for adding or editing information 
-- admin-view for adding data to dropdown-menus 
+- view for adding a plantation
+- view for editing a plantation
+- view for choosing which year to view information from 
 ## Application functions  
 ### Before login  
 - the user can register for an account
 - the user can login
-### Functions in production mode at the moment
-- the user can register for an account
-- the user can login and see the mainview
+### After login
+- the user can see the mainview
 - the user can add a new plantation
 - the user can edit a plantation, add info and so forth
-- the user can add yield-date and yield-amount (new week 6)
-- the user can choose from which year he/she wants to view plantations (new week 6)  
-- the user dan delete a plantation (new week 6)
-## Further development ideas  
+- the user can add yield-date and yield-amount
+- the user can choose from which year he/she wants to view plantations  
+- the user dan delete a plantation
+## Further development ideas (not implemented in this version)  
 - statistics for general data  
 - integrate weather statistics  
 - geolocation  
-
