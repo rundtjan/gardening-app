@@ -6,7 +6,7 @@ from ui.main_view import MainView
 from ui.add_plantation_view import AddPlantationView
 from ui.edit_plantation_view import EditPlantationView
 from ui.choose_year_view import ChooseYearView
-from ui.edit_date_view import EditDateView
+from ui.edit_date_view2 import EditDateView
 
 
 class UI:
@@ -71,11 +71,17 @@ class UI:
         pass
 
     def _add_plantation(self):
+        '''A method that shows the view to add a new plantation'''
         self._hide_current()
         self._current = AddPlantationView(self._root, self._show_mainview)
         self._current.pack()
 
     def _show_edit_plantation(self, plant_id):
+        '''A method that shows the view to edit a plantation
+        
+        Args:
+            plant_id: the id of the plantation to be edited
+        '''
         self._hide_current()
         self._current = EditPlantationView(
             self._root,
@@ -85,26 +91,19 @@ class UI:
         )
         self._current.pack()
 
-    def _edit_planting_date(self, plant_id):
-        self._hide_current()
-        self._current = EditPlantingDateView(
-            self._root, self._show_edit_plantation, plant_id
-        )
-        self._current.pack()
-
-    def _edit_yield_date(self, plant_id):
-        self._hide_current()
-        self._current = EditYieldDateView(
-            self._root, self._show_edit_plantation, plant_id
-        )
-        self._current.pack()
-
     def _show_choose_year(self):
+        '''A method that shows the view to choose which year to see info from'''
         self._hide_current()
         self._current = ChooseYearView(self._root, self._show_mainview)
         self._current.pack()
 
     def _edit_date(self, plant_id, planting_date):
+        '''A method that shows the view to edit a date
+        
+        Args:
+            plant_id: id of the plantation to add/edit a date to/on
+            planting_date: boolean, True if planting-date, False if yield date.
+        '''
         self._hide_current()
         self._current = EditDateView(self._root, self._show_edit_plantation, plant_id, planting_date)
         self._current.pack()

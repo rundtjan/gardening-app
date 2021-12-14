@@ -5,7 +5,7 @@ from services.gardening_service import gardening_service, LoginError
 
 
 class LoginView:
-    '''An object that creates the loginview.
+    '''A class that creates the loginview.
     '''
 
     def __init__(self, root, show_registration, show_mainview, show_adminview):
@@ -30,12 +30,17 @@ class LoginView:
         self._initialize()
 
     def pack(self):
+        '''A method that creates the view when all elements are added to it.
+        '''
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        '''A method that closes the view.
+        '''
         self._frame.destroy()
 
     def _handle_login(self):
+        '''A method that handles the login-logic with credentials from the form in the view'''
         username = self._user_entry.get()
         password = self._pw_entry.get()
         try:
@@ -45,6 +50,8 @@ class LoginView:
             self._error_label_var.set("Check your credentials.")
 
     def _initialize(self):
+        '''A method that creates the elements of the view and adds them to the layoutgrid.
+        '''
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(master=self._frame, text="Enter credentials")
         error_label = ttk.Label(master=self._frame,
