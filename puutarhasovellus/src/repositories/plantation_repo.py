@@ -75,27 +75,6 @@ class PlantationRepo:
         """
         self._conn = conn
 
-    def get_by_user(self, user):
-        """A method that gets plantations created by a certain user.
-
-        Args:
-            user: user-object to get the plantations for.
-
-        Returns:
-            A list of plantation-objects.
-        """
-
-        cursor = self._conn.cursor()
-
-        cursor.execute(
-            "select * from plantations WHERE username=? ORDER BY planting_date DESC",
-            (user.username,),
-        )
-
-        rows = cursor.fetchall()
-
-        return list(map(row_to_plantation, rows))
-
     def get_by_user_and_year(self, user, year):
         """A method that gets plantations created by a certain user for a certain year.
 
