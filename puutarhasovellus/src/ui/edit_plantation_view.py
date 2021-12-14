@@ -6,9 +6,20 @@ from services.gardening_service import gardening_service
 
 
 class EditPlantationView:
+    '''A class that creates a view to edit the info of a plantation
+    '''
     def __init__(
         self, root, show_mainview, edit_planting_date, edit_yield_date, plant_id
     ):
+        '''The constructor of the editplantation-class.
+
+        Args:
+            root: the tkinter-rootobject
+            show_mainview: a function with which you open the mainview
+            edit_planting_date: a function with which you open a calendar to edit the planting date
+            edit_yield_date: a function with which you open a calendar to edit the yield date
+            plant_id: int, the id of the plantation being edited
+        '''
         self._root = root
         self._show_mainview = show_mainview
         self._edit_planting_date = edit_planting_date
@@ -30,12 +41,18 @@ class EditPlantationView:
         self._initialize()
 
     def pack(self):
+        '''A method that creates the view when all elements are added to it.
+        '''
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        '''A method that closes the view.
+        '''
         self._frame.destroy()
 
     def _save_plantation(self):
+        '''A method that saves the info that was entered into the form in the view
+        '''
         self._plantation.set_plant(self._plant_entry.get())
         self._plantation.set_amount_planted(self._amount_planted_entry.get())
         self._plantation.set_info(self._info_entry.get())
@@ -49,6 +66,8 @@ class EditPlantationView:
             self._error_label_var.set(str(error))
     
     def _delete_plantation(self):
+        '''A method that triggers a function to delete the plantation.
+        '''
         if self._delete_try == 0:
             self._error_label_var.set("Click one more time to delete.")
             self._delete_try += 1
@@ -57,18 +76,47 @@ class EditPlantationView:
             self._show_mainview()
 
     def _date_to_string(self, date):
+        '''A method that creates a string representating a date
+
+        Args:
+            date: date, the date to be stringified.
+
+        Returns:
+            A string in the form dd/mm/year
+        '''
         return str(date.day) + "/" + str(date.month) + "/" + str(date.year)
 
     def _create_entry(self, insert=None):
+        '''A method that creates an inputfield.
+
+        Args:
+            insert: string, text to enter into the inputfield.
+
+        Returns:
+            An inputfield.
+        '''
         entry = ttk.Entry(master=self._frame, width=50)
         if insert:
             entry.insert(0, insert)
         return entry
 
     def _create_label(self, text):
+        '''A method that creates a label.
+        
+        Args:
+            text: String, the text to enter into the label.
+
+        Returns:
+            A label.
+        '''
         return ttk.Label(master=self._frame, text=text)
 
     def _add_to_grid(self, element):
+        '''A method that adds elements to the layoutgrid of the view.
+        
+        Args:
+            element: an element of the view.
+        '''
         element.grid(
             row=self._row,
             column=0,
@@ -80,6 +128,8 @@ class EditPlantationView:
         self._row += 1
 
     def _initialize(self):
+        '''A method that creates the elements of the view and adds them to the layoutgrid.
+        '''
         self._frame = ttk.Frame(master=self._root)
         yield_date = self._plantation.get_yield_date()
         yield_date_button_text = ""

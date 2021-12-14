@@ -7,7 +7,15 @@ from services.gardening_service import gardening_service
 
 
 class AddPlantationView:
+    '''A class that creates a view to add new plantations
+    '''
     def __init__(self, root, show_mainview):
+        '''The constructor of the view-class.
+
+        Args:
+            root: the tkinter-rootobject
+            show_mainview: a function, with which you open the mainview
+        '''
         self._root = root
         self._show_mainview = show_mainview
         self._frame = None
@@ -22,12 +30,18 @@ class AddPlantationView:
         self._initialize()
 
     def pack(self):
+        '''A method that creates the view when all elements are added to it.
+        '''
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        '''A method that closes the view.
+        '''
         self._frame.destroy()
 
     def _save_plantation(self):
+        '''A method that saves the info the user has entered into the form in the view.
+        '''
         date = self._cal.get_date()
         timestring = "%m/%d/%y"
         # this is a fix for the calendar emitting data in different form on Linux:
@@ -43,16 +57,32 @@ class AddPlantationView:
         except Exception as error:
             self._error_label_var.set(str(error))
 
-    def _create_entry(self, insert=None):
+    def _create_entry(self):
+        '''A method that creates an inputfield.
+
+        Returns:
+            An inputfield.
+        '''
         entry = ttk.Entry(master=self._frame, width=50)
-        if insert:
-            entry.insert(0, insert)
         return entry
 
     def _create_label(self, text):
+        '''A method that creates a label.
+        
+        Args:
+            text: String, the text to enter into the label.
+
+        Returns:
+            A label.
+        '''
         return ttk.Label(master=self._frame, text=text)
 
     def _add_to_grid(self, element):
+        '''A method that adds elements to the layoutgrid of the view.
+        
+        Args:
+            element: an element of the view.
+        '''
         element.grid(
             row=self._row,
             column=0,
@@ -64,6 +94,8 @@ class AddPlantationView:
         self._row += 1
 
     def _initialize(self):
+        '''A method that creates the elements of the view and adds them to the layoutgrid.
+        '''
         self._frame = ttk.Frame(master=self._root)
         label = self._create_label("Add a new plantation")
         error_label = ttk.Label(
