@@ -9,7 +9,7 @@ class EditPlantationView:
     '''A class that creates a view to edit the info of a plantation
     '''
     def __init__(
-        self, root, show_mainview, edit_planting_date, edit_yield_date, plant_id
+        self, root, show_mainview, plant_id, edit_date
     ):
         '''The constructor of the editplantation-class.
 
@@ -22,8 +22,7 @@ class EditPlantationView:
         '''
         self._root = root
         self._show_mainview = show_mainview
-        self._edit_planting_date = edit_planting_date
-        self._edit_yield_date = edit_yield_date
+        self._edit_date = edit_date
         self._frame = None
         self._error_label_var = StringVar()
         self._plant_id = plant_id
@@ -147,7 +146,7 @@ class EditPlantationView:
         edit_planting_date_button = ttk.Button(
             master=self._frame,
             text="Edit planting date: " + self._date_to_string(self._plant_date),
-            command=lambda: self._edit_planting_date(self._plant_id),
+            command=lambda: self._edit_date(self._plant_id, True),
         )
         plant_label = self._create_label("Which plant?")
         self._plant_entry = self._create_entry(self._plantation.get_plant())
@@ -160,7 +159,7 @@ class EditPlantationView:
         edit_yield_date_button = ttk.Button(
             master=self._frame,
             text=yield_date_button_text,
-            command=lambda: self._edit_yield_date(self._plant_id),
+            command=lambda: self._edit_date(self._plant_id, False),
         )
         yield_amount_label = self._create_label("How much yield?")
         self._yield_entry = self._create_entry(self._plantation.get_amount_yield())
