@@ -14,7 +14,7 @@ The repositories `UserRepository` and `PlantationRepository` are tested using th
 
 ### Test coverage
 
-The user interface is not tested, and the file functions.functions is also left outside the calculation of test-coverage, as it mostly consist of a helper function for building some of the views in the user interface. The test coverage is 97%. 
+The user interface is not tested, and the file functions.functions is also left outside the calculation of test-coverage, as it mostly consist of a helper function for building some of the views in the user interface. The test coverage is 96%. 
 
 ![Testcoverage](coverage.JPG)
 

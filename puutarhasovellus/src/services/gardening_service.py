@@ -28,6 +28,9 @@ class NoPlantingAmountError(Exception):
 class YieldDateOrYieldAmountError(Exception):
     pass
 
+class YieldDateEarlyError(Exception):
+    pass
+
 
 class GardeningService:
     """A class that handles the logic of the gardening application."""
@@ -147,6 +150,9 @@ class GardeningService:
             and not just_yield_date
         ):
             raise YieldDateOrYieldAmountError("Both yield date and amount needed.")
+        if plantation.get_yield_date():
+            if plantation.get_yield_date() < plantation.get_planting_date():
+                raise YieldDateEarlyError("The yield date should be after planting.")
         self._plantation_repo.update(plantation)
 
     def delete_plantation(self, plantation):

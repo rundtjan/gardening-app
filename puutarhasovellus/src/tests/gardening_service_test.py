@@ -11,6 +11,7 @@ from services.gardening_service import (
     PlantNameTooShortError,
     NoPlantingAmountError,
     YieldDateOrYieldAmountError,
+    YieldDateEarlyError
 )
 
 
@@ -157,6 +158,25 @@ class TestGardeningService(unittest.TestCase):
         )
         self.assertRaises(
             YieldDateOrYieldAmountError,
+            self._gardening_service.update_plantation,
+            plantation,
+        )
+
+    def test_cant_add_yield_date_that_is_before_yield_date(self):
+        date = datetime.datetime.now()
+        days = datetime.timedelta(5)
+        date2 = date - days
+        plantation = Plantation(
+            "Exists",
+            "Reed",
+            date,
+            "33kg",
+            "some info",
+            date2,
+            "333kg",
+        )
+        self.assertRaises(
+            YieldDateEarlyError,
             self._gardening_service.update_plantation,
             plantation,
         )
