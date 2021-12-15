@@ -15,4 +15,6 @@
 |  8.12  | 2    | sato-määrä, tarkistus |
 |  11.12 | 1    | vuosivalinta |
 | 13.12 | 2     | kalenteritoiminto uusiksi |
+| 15.12 | 2     | pvm-tarkistus ja testi |
+| 15.12 | 1     | dokumentaatio kuntoon |
 | YHT.   | 25   |              |
