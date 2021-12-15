@@ -17,4 +17,4 @@
 | 13.12 | 2     | kalenteritoiminto uusiksi |
 | 15.12 | 2     | pvm-tarkistus ja testi |
 | 15.12 | 1     | dokumentaatio kuntoon |
-| YHT.   | 25   |              |
+| YHT.   | 28   |              |
