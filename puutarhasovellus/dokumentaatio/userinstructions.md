@@ -1,5 +1,4 @@
 # User instructions  
-(NB! There seems to be some problem with tkcalendar causing the process to get locked when using Linux. If this happens, shut down the cli (it gets locked) and try again. This is unfortunate, but is not linked to the application in itself.)  
 
 First follow the instructions in the [readme](https://github.com/rundtjan/ot-harjoitustyo#readme) to install the application. Then after running it, choose "Register" to register:  
 
